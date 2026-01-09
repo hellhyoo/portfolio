@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Works - 作品</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables */
+        :root {
+            --color-bg: #0c0a09;
+            --color-text: #a3a3a3;
+            --color-text-bright: #fff;
+            --color-accent: #e7ffb0;
+            
+            --accent-1: #d8005f;
+            --accent-2: #08c291;
+            --accent-3: #0091ff;
+            --accent-4: #d92641;
+            --accent-5: #0cac44;
+            --accent-6: #ffbb00;
+            --accent-7: #f06800;
+            --accent-8: #b55af2;
+            --accent-9: #e878b4;
+            --accent-10: #bfa892;
+            --accent-11: #0eb8cd;
+            
+            --font-family: 'Google Sans Flex', 'Noto Sans JP', sans-serif;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        section {
+            padding: 4rem 0; /* Только вертикальные отступы */
+        }
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto; 
+            padding: 0 auto; /* Горизонтальные отступы */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        h2.section-title {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-align: center;
+            padding: 0.8rem 4rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 50px;
+        }
+        .section-subtitle {
+            font-size: 1.8rem;
+            font-weight: 100;
+            font-style: italic;
+            color: var(--color-accent);
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        /* School Works Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .carousel-track {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+            z-index: 1;
+        }
+
+        .carousel-slide.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        .slide-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid;
+            border-color: var(--current-accent, var(--color-accent));
+            transition: border-color 0.5s ease;
+        }
+
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            padding: 1rem;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--current-accent, var(--color-accent));
+            margin-bottom: 1.5rem;
+            transition: color 0.5s ease;
+        }
+
+        .slide-description {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        .carousel-arrow {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--color-text);
+            border-radius: 50%;
+            background: transparent;
+            color: var(--color-text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-thumbnails {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 3rem;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 8px;
+            border: none;
+            border-radius: 4px;
+            background: var(--color-text);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail:hover {
+            opacity: 0.6;
+            transform: scaleY(1.2);
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            background: var(--current-accent, var(--color-accent));
+        }
+    </style>
+</head>
+<body>
+    <!-- School Works Section -->
+    <section id="school-works" class="school-works-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">作品</h2>
+                <div class="section-subtitle">一 在学一年目の制作作品 。</div>
+            </div>
+            <div class="carousel-container">
+                <!-- Стрелка влево -->
+                <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Слайды -->
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/d8005f/ffffff?text=Work+1" alt="Work 1">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 一号</h3>
+                            <p class="slide-description">Описание первой работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2" alt="Work 2">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 二号</h3>
+                            <p class="slide-description">Описание второй работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/0091ff/ffffff?text=Work+3" alt="Work 3">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 三号</h3>
+                            <p class="slide-description">Описание третьей работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/d92641/ffffff?text=Work+4" alt="Work 4">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 四号</h3>
+                            <p class="slide-description">Описание четвёртой работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5" alt="Work 5">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 五号</h3>
+                            <p class="slide-description">Описание пятой работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/ffbb00/ffffff?text=Work+6" alt="Work 6">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 六号</h3>
+                            <p class="slide-description">Описание шестой работы...</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://via.placeholder.com/800x500/f06800/ffffff?text=Work+7" alt="Work 7">
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 七号</h3>
+                            <p class="slide-description">Описание седьмой работы...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Стрелка вправо -->
+                <button class="carousel-arrow carousel-arrow-right" aria-label="Next">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Миниатюры внизу -->
+            <div class="carousel-thumbnails">
+                <button class="thumbnail active" data-index="0"></button>
+                <button class="thumbnail" data-index="1"></button>
+                <button class="thumbnail" data-index="2"></button>
+                <button class="thumbnail" data-index="3"></button>
+                <button class="thumbnail" data-index="4"></button>
+                <button class="thumbnail" data-index="5"></button>
+                <button class="thumbnail" data-index="6"></button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function() {
+            'use strict';
+            
+            const SchoolCarousel = {
+                currentIndex: 0,
+                slides: [],
+                thumbnails: [],
+                
+                accents: [
+                    '#d8005f', // work 1
+                    '#08c291', // work 2
+                    '#0091ff', // work 3
+                    '#d92641', // work 4
+                    '#0cac44', // work 5
+                    '#ffbb00', // work 6
+                    '#f06800', // work 7
+                    '#b55af2', // work 8
+                    '#e878b4', // work 9
+                    '#bfa892', // work 10
+                    '#0eb8cd', // work 11
+                ],
+                
+                init() {
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', () => this.setup());
+                    } else {
+                        this.setup();
+                    }
+                },
+                
+                setup() {
+                    this.slides = document.querySelectorAll('.carousel-slide');
+                    this.thumbnails = document.querySelectorAll('.thumbnail');
+                    const prevBtn = document.querySelector('.carousel-arrow-left');
+                    const nextBtn = document.querySelector('.carousel-arrow-right');
+                    
+                    if (!this.slides.length) return;
+                    
+                    this.updateAccent();
+                    
+                    prevBtn?.addEventListener('click', () => this.prev());
+                    nextBtn?.addEventListener('click', () => this.next());
+                    
+                    this.thumbnails.forEach((thumb, index) => {
+                        thumb.addEventListener('click', () => this.goToSlide(index));
+                    });
+                    
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'ArrowLeft') this.prev();
+                        if (e.key === 'ArrowRight') this.next();
+                    });
+                },
+                
+                goToSlide(index) {
+                    if (index === this.currentIndex) return;
+                    
+                    const currentSlide = this.slides[this.currentIndex];
+                    const nextSlide = this.slides[index];
+                    
+                    if (index > this.currentIndex) {
+                        currentSlide.classList.add('prev');
+                        currentSlide.classList.remove('active');
+                        nextSlide.classList.remove('prev');
+                        nextSlide.classList.add('active');
+                    } else {
+                        currentSlide.classList.remove('active');
+                        nextSlide.classList.remove('prev');
+                        nextSlide.classList.add('active');
+                        
+                        setTimeout(() => {
+                            currentSlide.classList.remove('prev');
+                        }, 500);
+                    }
+                    
+                    this.thumbnails[this.currentIndex]?.classList.remove('active');
+                    this.thumbnails[index]?.classList.add('active');
+                    
+                    this.currentIndex = index;
+                    this.updateAccent();
+                },
+                
+                next() {
+                    const nextIndex = (this.currentIndex + 1) % this.slides.length;
+                    this.goToSlide(nextIndex);
+                },
+                
+                prev() {
+                    const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                    this.goToSlide(prevIndex);
+                },
+                
+                updateAccent() {
+                    const accent = this.accents[this.currentIndex];
+                    
+                    if (accent) {
+                        document.documentElement.style.setProperty('--current-accent', accent);
+                    }
+                }
+            };
+            
+            SchoolCarousel.init();
+        })();
+    </script>
+</body>
+</html>

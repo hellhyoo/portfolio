@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero - 自己紹介</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables */
+        :root {
+            --color-bg: #0c0a09;
+            --color-text: #a3a3a3;
+            --color-text-bright: #fff;
+            --color-accent: #e7ffb0;
+            
+            --accent-1: #d8005f;
+            --accent-2: #08c291;
+            --accent-3: #0091ff;
+            --accent-4: #d92641;
+            --accent-5: #0cac44;
+            --accent-6: #ffbb00;
+            --accent-7: #f06800;
+            --accent-8: #b55af2;
+            --accent-9: #e878b4;
+            --accent-10: #bfa892;
+            --accent-11: #0eb8cd;
+            
+            --font-family: 'Google Sans Flex', 'Noto Sans JP', sans-serif;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        section {
+            padding: 4rem 0; /* Только вертикальные отступы */
+        }
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto; 
+            padding: 0 auto; /* Горизонтальные отступы */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        h2.section-title {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-align: center;
+            padding: 0.8rem 4rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 50px;
+        }
+        .section-subtitle {
+            font-size: 1.8rem;
+            font-weight: 100;
+            font-style: italic;
+            color: var(--color-text);
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        /* Заголовок с градиентом */
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(90deg, #0c0a09, #5b6445, #0c0a09);
+            background-size: 140% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 auto 3rem;
+            width: fit-content;
+        }
+
+        /* Hero Section Styles */
+        .hero-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        .hero-left {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            gap: 2rem;
+            flex-shrink: 0;
+            min-width: 250px;
+        }
+
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--color-text);
+        }
+
+        .hero-divider {
+            width: 1px;
+            height: 100%;
+            background: var(--color-text);
+            transform: scaleX(0.5);
+            align-self: stretch;
+        }
+
+        .hero-text {
+            flex: 1;
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--color-text-bright);
+            max-width: 880px;
+        }
+
+        .hero-text p {
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="section-container">
+            <h1>ポートフォリオ</h1>
+            <div class="section-header">
+                <h2 class="section-title">自己紹介</h2>
+                <div class="section-subtitle">一 はじめまして 。</div>
+            </div>
+        
+            <div class="hero-content">
+                <div class="hero-left">
+                    <img src="https://via.placeholder.com/120/a3a3a3/ffffff?text=Avatar" alt="Avatar" class="hero-avatar">
+                    <div class="hero-divider"></div>
+                </div>
+                
+                <div class="hero-text">
+                    <p>
+                        はじめまして。セルゲイと申します。<br>
+                        千葉医療秘書＆IT専門学校WEBデザイン・IT科の1年生です。
+                    </p>
+                    <p>
+                        グラフィックデザインに興味があり、
+                        今年度は美しさと構造へのこだわりを、<br>
+                        Webインターフェースの制作を通して形にしてきました。<br>
+                        細部への配慮と使いやすさを重視しています。
+                    </p>
+                    <p>
+                        本ポートフォリオには、
+                        在学期間中に制作した作品を収録しています。<br>
+                        カリキュラム内の課題作品に加え、
+                        スキル向上や自身のアイデアの実現を目的とした<br>
+                        自主制作も含まれています。
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

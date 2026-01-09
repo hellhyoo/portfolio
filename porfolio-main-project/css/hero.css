@@ -1,0 +1,51 @@
+/* Контейнер с аватаром и текстом */
+.hero-content {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по верхней границе */
+    gap: 3rem;
+    width: 100%;
+}
+
+/* Левая часть: аватар + вертикальная черта */
+.hero-left {
+    display: flex;
+    align-items: flex-start; /* Аватар сверху */
+    flex-direction: row-reverse; /* добавил временно. потом нужно будет правильно прижать к правому краю */
+    gap: 2rem;
+    flex-shrink: 0;
+    min-width: 250px;
+}
+
+.hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--color-text);
+}
+
+.hero-divider {
+    width: 1px;
+    height: 100%; /* Растягивается по высоте родителя */
+    background: var(--color-text);
+    transform: scaleX(0.5);
+    align-self: stretch; /* Занимает всю высоту flex-контейнера */
+}
+
+/* Правая часть: текст */
+.hero-text {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-text);
+    max-width: 800px;
+}
+
+.hero-text p {
+    margin-bottom: 1rem;
+}
+
+.hero-text p:last-child {
+    margin-bottom: 0;
+}
