@@ -35,17 +35,18 @@
         /* Hero Section Styles */
         .hero-content {
             display: flex;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
             gap: 3rem;
+            width: 100%;
         }
 
+        /* Левая часть: аватар + вертикальная черта */
         .hero-left {
             display: flex;
-            align-items: flex-start;
-            flex-direction: row-reverse;
-            gap: 2rem;
+            align-items: center;
             flex-shrink: 0;
-            min-width: 250px;
+            align-self: stretch;
         }
 
         .hero-avatar {
@@ -54,23 +55,24 @@
             border-radius: 50%;
             object-fit: cover;
             background: var(--color-text);
+            flex-shrink: 0;
         }
 
         .hero-divider {
             width: 1px;
-            height: 100%;
             background: var(--color-text);
             transform: scaleX(0.5);
             align-self: stretch;
         }
 
+        /* Правая часть: текст */
         .hero-text {
-            flex: 1;
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 300;
             line-height: 1.8;
-            color: var(--color-text-bright);
-            max-width: 880px;
+            color: var(--color-text);
+            max-width: 800px;
+            flex-shrink: 1;
         }
 
         .hero-text p {
@@ -86,7 +88,7 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="section-container">
-            
+
             <h1>ポートフォリオ</h1>
             <div class="section-header">
                 <h2 class="section-title">自己紹介</h2>
@@ -95,30 +97,60 @@
         
             <div class="hero-content">
                 <div class="hero-left">
-                    <img src="https://via.placeholder.com/120/a3a3a3/ffffff?text=Avatar" alt="Avatar" class="hero-avatar">
-                    <div class="hero-divider"></div>
+                    <img src="https://via.placeholder.com/120/5b6445/ffffff?text=Avatar" alt="Avatar" class="hero-avatar">
                 </div>
                 
+                <div class="hero-divider"></div>
+
                 <div class="hero-text">
                     <p>
                         はじめまして。セルゲイと申します。<br>
                         千葉医療秘書＆IT専門学校WEBデザイン・IT科の1年生です。
                     </p>
                     <p>
-                        グラフィックデザインに興味があり、
-                        今年度は美しさと構造へのこだわりを、<br>
-                        Webインターフェースの制作を通して形にしてきました。<br>
-                        細部への配慮と使いやすさを重視しています。
+                        グラフィックデザインに興味があり、今年度は美しさと構造へのこだわりを、<br>
+                        Webインターフェースの制作を通して形にしてきました。細部への配慮と使いやすさを重視しています。
                     </p>
                     <p>
                         本ポートフォリオには、
-                        在学期間中に制作した作品を収録しています。<br>
-                        カリキュラム内の課題作品に加え、
-                        スキル向上や自身のアイデアの実現を目的とした<br>
-                        自主制作も含まれています。
-
+                        在学期間中に制作した作品を収録しています。カリキュラム内の課題作品に加え、<br>
+                        スキル向上や自身のアイデアの実現を目的とした自主制作も含まれています。
                     </p>
                 </div>
+            </div>
+
+            <div class="skills">
+                <ul class="skills-tags">
+                    <li class="skills-tag" data-skill="photoshop">Photoshop</li>
+                    <li class="skills-tag" data-skill="illustrator">Illustrator</li>
+                    <li class="skills-tag" data-skill="premiere">Premiere Pro</li>
+                    <li class="skills-tag" data-skill="adobe-xd">Adobe XD</li>
+                    <li class="skills-tag" data-skill="figma">Figma</li>
+                    <li class="skills-tag" data-skill="html">HTML</li>
+                    <li class="skills-tag" data-skill="css">CSS</li>
+                    <li class="skills-tag" data-skill="javascript">JavaScript</li>
+                    <li class="skills-tag" data-skill="python">Python</li>
+                    <li class="skills-tag" data-skill="word">Word</li>
+                    <li class="skills-tag" data-skill="excel">Excel</li>
+                    <li class="skills-tag" data-skill="access">Access</li>
+                    <li class="skills-tag" data-skill="supabase">Supabase</li>
+                </ul>
+
+                <ul class="skills-icons">
+                    <li class="skills-icon skills-icon--photoshop" data-skill="photoshop"></li>
+                    <li class="skills-icon skills-icon--illustrator" data-skill="illustrator"></li>
+                    <li class="skills-icon skills-icon--premiere" data-skill="premiere"></li>
+                    <li class="skills-icon skills-icon--adobexd" data-skill="adobe-xd"></li>
+                    <li class="skills-icon skills-icon--figma" data-skill="figma"></li>
+                    <li class="skills-icon skills-icon--html" data-skill="html"></li>
+                    <li class="skills-icon skills-icon--css" data-skill="css"></li>
+                    <li class="skills-icon skills-icon--javascript" data-skill="javascript"></li>
+                    <li class="skills-icon skills-icon--python" data-skill="python"></li>
+                    <li class="skills-icon skills-icon--word" data-skill="word"></li>
+                    <li class="skills-icon skills-icon--excel" data-skill="excel"></li>
+                    <li class="skills-icon skills-icon--access" data-skill="access"></li>
+                    <li class="skills-icon skills-icon--supabase" data-skill="supabase"></li>
+                </ul>
             </div>
         </div>
     </section>
