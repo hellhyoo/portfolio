@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Module</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 1rem;
+            background: #0c0a09;
+        }
+
+        .smooth-nav {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            background: transparent;
+                backdrop-filter: blur(16px) brightness(0.7);
+                -webkit-backdrop-filter: blur(16px) brightness(0.7);  /* Для Safari */
+
+            border-radius: 50px;
+            padding: 0.25rem 0.8rem;
+            box-shadow: 0 2px 8px #e7ffb0;
+                box-shadow: 0 4px 16px rgba(231, 255, 176, 0.5);
+        }
+        
+        .smooth-nav-link {
+            position: relative;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        
+        .smooth-nav-link:hover {
+            color: #e7ffb0;
+        }
+        
+        .smooth-nav-indicator {
+            position: absolute;
+            background: rgba(231, 255, 176, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+        
+        .smooth-nav-indicator.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Разметка навигации -->
+    <nav class="smooth-nav">
+        <div class="smooth-nav-indicator"></div>
+        <a class="smooth-nav-link" href="#!">ホーム</a>
+        <a class="smooth-nav-link" href="#!">レッスン</a>
+        <a class="smooth-nav-link" href="#!">イベント</a>
+        <a class="smooth-nav-link" href="#!">アクセス</a>
+        <a class="smooth-nav-link" href="https://habr.com/ru/articles/850528/">ソース</a>
+    </nav>
+
+    <script>
+        (function() {
+            'use strict';
+            
+            // Модуль навигации
+            const SmoothNav = {
+                init() {
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', () => this.setup());
+                    } else {
+                        this.setup();
+                    }
+                },
+                
+                setup() {
+                    const nav = document.querySelector('.smooth-nav');
+                    const indicator = document.querySelector('.smooth-nav-indicator');
+                    
+                    if (!nav || !indicator) return;
+                    
+                    const links = document.querySelectorAll('.smooth-nav-link');
+                    
+                    links.forEach(link => {
+                        link.addEventListener('mouseenter', () => {
+                            this.updateIndicator(link, nav, indicator);
+                            indicator.classList.add('active');
+                        });
+                    });
+                    
+                    nav.addEventListener('mouseleave', () => {
+                        indicator.classList.remove('active');
+                    });
+                },
+                
+                updateIndicator(link, nav, indicator) {
+                    const linkRect = link.getBoundingClientRect();
+                    const navRect = nav.getBoundingClientRect();
+                    
+                    Object.assign(indicator.style, {
+                        left: `${linkRect.left - navRect.left}px`,
+                        top: `${linkRect.top - navRect.top}px`,
+                        width: `${linkRect.width}px`,
+                        height: `${linkRect.height}px`
+                    });
+                }
+            };
+            
+            // Инициализация
+            SmoothNav.init();
+        })();
+    </script>
+</body>
+</html>

@@ -1,32 +1,20 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Инициативные проекты</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet-projects - 自主制作</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Noto Sans JP'; /* , sans-serif */
-      background: #0c0a09;
-      margin: 0;
-      padding: 2rem;
-      color: #a3a3a3;
-    }
-    h1 {
-      color: #e7ffb0;
-      font-size: 1.2rem;
-      font-weight: 300;
-      text-align: center;
-      width: fit-content;
-      margin: 0 auto 2rem;
-      padding: 0.8rem 4rem;
-      border: 1px solid #e7ffb0;
-      border-radius: 50px;
-    }
+    /* Variables */
+    @import url(../../porfolio-main-project/css/variables.css);
+    /* Base Styles */
+    @import url(../../porfolio-main-project/css/main.css);
 
     .project-section {
       display: flex;
@@ -175,92 +163,95 @@
   </style>
 </head>
 <body>
-  <h1>個人プロジェクト</h1> <!-- 自主制作プロジェクト -->
+  <section id="pet-projects" class="pet-projects-section">
+    <div class="section-container">
 
-  <div class="project-section" id="projectSection">
-    <div class="project-strip">
-      <a href="https://rgb-hex.netlify.app" class="project-card">
-        <div class="project-card-inner">
-          <img src="KomaPote.png" alt="Project 1" class="project-image">
-          <h3 class="project-title">RGB HEX Color Code Visualizer</h3>
-        </div>
-        <p class="project-description">
-          <span>
-            Интерактивный веб-инструмент, предназначенный для визуализации процесса формирования цвета через шестнадцатеричные (HEX) коды.
-            Проект позволяет в реальном времени наблюдать, как изменение значений в каналах Red, Green и Blue влияет на итоговый цвет.
-          </span>
-        </p>
-      </a>
+      <div class="section-header">
+        <h2 class="section-title">自主制作</h2>
+        <div class="section-subtitle">一 成長は、プロセスに興味があるところから始まる 。</div>
+      </div>
 
-      <a href="https://js-arr.netlify.app" class="project-card">
-        <div class="project-card-inner">
-          <img src="KomaPote.png" alt="Project 2" class="project-image">
-          <h3 class="project-title">JS Array Methods Visualizer</h3>
-        </div>
-        <p class="project-description">
-          <span>
-            Образовательный веб-инструмент, предназначенный для наглядного изучения работы встроенных методов массивов JavaScript.
-            Проект позволяет интерактивно манипулировать данными и мгновенно видеть результат выполнения кода, что помогает лучше понять внутреннюю логику работы методов.
-          </span>
-        </p>
-      </a>
+      <div class="project-section" id="projectSection">
+        <div class="project-strip">
+          <a href="https://rgb-hex.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 1" class="project-image">
+              <h3 class="project-title">RGB HEX Color Code Visualizer</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                Интерактивный веб-инструмент, предназначенный для визуализации процесса формирования цвета через шестнадцатеричные (HEX) коды.
+                Проект позволяет в реальном времени наблюдать, как изменение значений в каналах Red, Green и Blue влияет на итоговый цвет.
+              </span>
+            </p>
+          </a>
 
-      <a href="https://mail-jp.netlify.app" class="project-card">
-        <div class="project-card-inner">
-          <img src="KomaPote.png" alt="Project 3" class="project-image">
-          <h3 class="project-title">Japanese Business Email Builder</h3>
-        </div>
-        <p class="project-description">
-          <span>
-            Интерактивный веб-инструмент для автоматизации составления деловых писем на японском языке в соответствии с нормами бизнес-этикета.
-            Проект позволяет пользователям динамически формировать структуру письма, настраивая заголовки, приветствия, основную часть и подпись в реальном времени.
-          </span>
-        </p>
-      </a>
+          <a href="https://js-arr.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 2" class="project-image">
+              <h3 class="project-title">JS Array Methods Visualizer</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                Образовательный веб-инструмент, предназначенный для наглядного изучения работы встроенных методов массивов JavaScript.
+                Проект позволяет интерактивно манипулировать данными и мгновенно видеть результат выполнения кода, что помогает лучше понять внутреннюю логику работы методов.
+              </span>
+            </p>
+          </a>
 
-      <a href="#!" class="project-card">
-        <div class="project-card-inner">
-          <img src="KomaPote.png" alt="Project 4" class="project-image">
-          <h3 class="project-title">Dynamic Twitch Chat Overlay</h3>
-        </div>
-        <p class="project-description">
-          <span>
-            Высокопроизводительный веб-виджет, предназначенный для отображения сообщений из чата Twitch в реальном времени во время прямых трансляций.
-            Инструмент интегрируется непосредственно с Twitch IRC и сторонними сервисами через API, обеспечивая плавную визуализацию общения зрителей.
-          </span>
-        </p>
-      </a>
+          <a href="https://mail-jp.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 3" class="project-image">
+              <h3 class="project-title">Japanese Business Email Builder</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                Интерактивный веб-инструмент для автоматизации составления деловых писем на японском языке в соответствии с нормами бизнес-этикета.
+                Проект позволяет пользователям динамически формировать структуру письма, настраивая заголовки, приветствия, основную часть и подпись в реальном времени.
+              </span>
+            </p>
+          </a>
 
-      <a href="#!" class="project-card">
-        <div class="project-card-inner">
-          <img src="KomaPote.png" alt="Project 5" class="project-image">
-          <h3 class="project-title">Car Care Service Configurator</h3>
+          <a href="#!" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 4" class="project-image">
+              <h3 class="project-title">Dynamic Twitch Chat Overlay</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                Высокопроизводительный веб-виджет, предназначенный для отображения сообщений из чата Twitch в реальном времени во время прямых трансляций.
+                Инструмент интегрируется непосредственно с Twitch IRC и сторонними сервисами через API, обеспечивая плавную визуализацию общения зрителей.
+              </span>
+            </p>
+          </a>
+
+          <a href="#!" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 5" class="project-image">
+              <h3 class="project-title">Car Care Service Configurator</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                Интеллектуальная система конфигурации услуг для автомобилей.
+                Проект прошел путь от авторского концепта до внедрения в production.
+                В основе сервиса лежит уникальная логика взаимозависимых параметров, которая впоследствии была защищена патентом.
+                В портфолио представлены изображения раннего прототипа, разработанного мной в качестве архитектурной основы сервиса.
+              </span>
+            </p>
+          </a>
         </div>
-        <p class="project-description">
-          <span>
-            Интеллектуальная система конфигурации услуг для автомобилей.
-            Проект прошел путь от авторского концепта до внедрения в production.
-            В основе сервиса лежит уникальная логика взаимозависимых параметров, которая впоследствии была защищена патентом.
-            В портфолио представлены изображения раннего прототипа, разработанного мной в качестве архитектурной основы сервиса.
-          </span>
-        </p>
-      </a>
+
+        <div class="toggle-wrapper">
+          <div class="toggle-line"></div>
+          <button class="toggle-btn" id="toggleBtn">
+            <span class="btn-text-show" id="textShow">показать подробности</span>
+            <span class="btn-text-hide" id="textHide">скрыть</span>
+          </button>
+          <div class="toggle-line"></div>
+        </div>
+      </div>
     </div>
-
-    <div class="toggle-wrapper">
-      <div class="toggle-line"></div>
-      <button class="toggle-btn" id="toggleBtn">
-        <span class="btn-text-show" id="textShow">показать подробности</span>
-        <span class="btn-text-hide" id="textHide">скрыть</span>
-      </button>
-      <div class="toggle-line"></div>
-    </div>
-  </div>
-
-  <div style="margin-top: 3rem; padding: 2rem; border: 1px solid #333;">
-    <h2 style="color: #e7ffb0;">Контент ниже</h2>
-    <p>Этот блок отодвигается вниз при раскрытии карточек.</p>
-  </div>
+  </section>
 
   <script>
     const section = document.getElementById('projectSection');

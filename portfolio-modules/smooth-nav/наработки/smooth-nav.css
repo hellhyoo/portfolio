@@ -1,0 +1,32 @@
+.smooth-nav {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    background: white;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.smooth-nav-link {
+    position: relative;
+    color: inherit;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+}
+
+.smooth-nav-indicator {
+    position: absolute;
+    background: gainsboro;
+    border-radius: 0.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+}
+
+.smooth-nav-indicator.active {
+    opacity: 1;
+}
