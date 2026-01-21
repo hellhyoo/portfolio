@@ -70,14 +70,14 @@
         .hero-text {
             font-size: 1rem;
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.9;
             color: var(--color-text-bright);
             max-width: 800px;
             flex-shrink: 1;
         }
 
         .hero-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.1rem;
         }
 
         .hero-text p:last-child {
@@ -86,7 +86,7 @@
 
         /* Skills Section */
         .skills {
-            margin-top: 6rem;
+            margin-top: 5rem;
             display: flex;
             flex-direction: column;
         }
@@ -114,7 +114,8 @@
             user-select: none;
         }
 
-        .skills-tag:hover {
+        .skills-tag:hover,
+        .skills-tag.highlighted {
             border-color: var(--color-accent);
             color: var(--color-accent);
             background: rgba(231, 255, 176, 0.05);
@@ -125,7 +126,7 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0.5rem auto 0;
             overflow: hidden;
             mask-image: linear-gradient(
                 to right,
@@ -149,27 +150,6 @@
             animation: scroll-left 120s linear infinite;
         }
 
-        .skills-icons {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .skills-icon {
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(231, 255, 176, 0.1);
-            border-radius: 12px;
-            flex-shrink: 0;
-            user-select: none;
-            pointer-events: none;
-            margin-right: 1.5rem;
-        }
-
         @keyframes scroll-left {
             0% {
                 transform: translateX(0);
@@ -179,83 +159,73 @@
             }
         }
 
-        .skills-icon[data-skill="photoshop"] {
-            background-image: url(../images/photoshop.svg);
+        .skills-icons {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skills-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-radius: 12px;
+            flex-shrink: 0;
+            user-select: none;
+            margin-right: 1.7rem;
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 48px 48px;
+            background-size: 40px 40px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skills-icon:hover,
+        .skills-icon.highlighted {
+            background-color: rgba(231, 255, 176, 0.2);
+        }
+
+        .skills-icon[data-skill="photoshop"] {
+            background-image: url(../images/photoshop.svg);
         }
         .skills-icon[data-skill="illustrator"] {
             background-image: url(../images/illustrator.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="premiere"] {
             background-image: url(../images/premiere.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="adobe-xd"] {
             background-image: url(../images/xd.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="figma"] {
             background-image: url(../images/figma.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="html"] {
             background-image: url(../images/html.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="css"] {
             background-image: url(../images/css.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="javascript"] {
             background-image: url(../images/javascript.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="python"] {
             background-image: url(../images/python.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="word"] {
             background-image: url(../images/word.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="excel"] {
             background-image: url(../images/excel.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="access"] {
             background-image: url(../images/access.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
         .skills-icon[data-skill="supabase"] {
             background-image: url(../images/supabase.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 48px 48px;
         }
     </style>
 </head>
@@ -299,22 +269,22 @@
                 <div class="section-subtitle">一 思考の周辺 。</div>
                 <!-- Капсульные теги -->
                 <ul class="skills-tags">
-                    <li class="skills-tag">Photoshop</li>
-                    <li class="skills-tag">Illustrator</li>
-                    <li class="skills-tag">Premiere Pro</li>
-                    <li class="skills-tag">Adobe XD</li>
-                    <li class="skills-tag">Figma</li>
-                    <li class="skills-tag">HTML</li>
-                    <li class="skills-tag">CSS</li>
+                    <li class="skills-tag" data-skill="photoshop">Photoshop</li>
+                    <li class="skills-tag" data-skill="illustrator">Illustrator</li>
+                    <li class="skills-tag" data-skill="premiere">Premiere Pro</li>
+                    <li class="skills-tag" data-skill="adobe-xd">Adobe XD</li>
+                    <li class="skills-tag" data-skill="figma">Figma</li>
+                    <li class="skills-tag" data-skill="html">HTML</li>
+                    <li class="skills-tag" data-skill="css">CSS</li>
                 </ul>
 
                 <ul class="skills-tags">
-                    <li class="skills-tag">JavaScript</li>
-                    <li class="skills-tag">Python</li>
-                    <li class="skills-tag">Word</li>
-                    <li class="skills-tag">Excel</li>
-                    <li class="skills-tag">Access</li>
-                    <li class="skills-tag">Supabase</li>
+                    <li class="skills-tag" data-skill="javascript">JavaScript</li>
+                    <li class="skills-tag" data-skill="python">Python</li>
+                    <li class="skills-tag" data-skill="word">Word</li>
+                    <li class="skills-tag" data-skill="excel">Excel</li>
+                    <li class="skills-tag" data-skill="access">Access</li>
+                    <li class="skills-tag" data-skill="supabase">Supabase</li>
                 </ul>
 
                 <!-- Бегущая строка с иконками -->
@@ -356,5 +326,34 @@
             </div>
         </div>
     </section>
+    <script>
+        const tags = document.querySelectorAll('.skills-tag');
+        const icons = document.querySelectorAll('.skills-icon');
+
+        // Объединяем все интерактивные элементы
+        const allElements = [...tags, ...icons];
+
+        // Функция для подсветки элементов по data-skill
+        function highlightSkill(skill) {
+            allElements.forEach(el => {
+                if (el.dataset.skill === skill) {
+                    el.classList.add('highlighted');
+                }
+            });
+        }
+
+        // Функция для снятия подсветки
+        function unhighlightAll() {
+            allElements.forEach(el => el.classList.remove('highlighted'));
+        }
+
+        // Один цикл для всех элементов
+        allElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                highlightSkill(el.dataset.skill);
+            });
+            el.addEventListener('mouseleave', unhighlightAll);
+        });
+    </script>
 </body>
 </html>

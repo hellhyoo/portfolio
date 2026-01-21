@@ -6,21 +6,6 @@
         slides: [],
         thumbnails: [],
         
-        // Массив акцентов для работ
-        accents: [
-            '#d8005f', // work 1
-            '#08c291', // work 2
-            '#0091ff', // work 3
-            '#d92641', // work 4
-            '#0cac44', // work 5
-            '#ffbb00', // work 6
-            '#f06800', // work 7
-            '#b55af2', // work 8
-            '#e878b4', // work 9
-            '#bfa892', // work 10
-            '#0eb8cd', // work 11
-        ],
-        
         init() {
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => this.setup());
@@ -37,72 +22,97 @@
             
             if (!this.slides.length) return;
             
-            // Установить начальный акцент
-            this.updateAccent();
-            
-            // Навигация стрелками
             prevBtn?.addEventListener('click', () => this.prev());
             nextBtn?.addEventListener('click', () => this.next());
             
-            // Навигация миниатюрами
             this.thumbnails.forEach((thumb, index) => {
                 thumb.addEventListener('click', () => this.goToSlide(index));
             });
             
-            // Клавиатурная навигация
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') this.prev();
                 if (e.key === 'ArrowRight') this.next();
             });
         },
         
-        goToSlide(index) {
-            if (index === this.currentIndex) return;
+        goToSlide(index, forceDirection = null) {
+            if (index === this.currentIndex || index < 0 || index >= this.slides.length) return;
             
             const currentSlide = this.slides[this.currentIndex];
             const nextSlide = this.slides[index];
             
-            // Определить направление
-            if (index > this.currentIndex) {
-                currentSlide.classList.add('prev');
-                currentSlide.classList.remove('active');
-                nextSlide.classList.remove('prev');
-                nextSlide.classList.add('active');
+            // Определяем направление
+            let isForward;
+            
+            if (forceDirection !== null) {
+                isForward = forceDirection;
             } else {
-                currentSlide.classList.remove('active');
-                nextSlide.classList.remove('prev');
-                nextSlide.classList.add('active');
+                const diff = index - this.currentIndex;
+                const totalSlides = this.slides.length;
                 
-                setTimeout(() => {
-                    currentSlide.classList.remove('prev');
-                }, 500);
+                if (Math.abs(diff) === totalSlides - 1) {
+                    isForward = diff < 0;
+                } else {
+                    isForward = diff > 0;
+                }
             }
             
-            // Обновить миниатюры
+            // Полностью очищаем все слайды от классов анимации
+            this.slides.forEach(slide => {
+                slide.classList.remove('exit-left', 'exit-right', 'from-left', 'from-right');
+            });
+            
+            // Устанавливаем начальное положение для нового слайда БЕЗ transition
+            nextSlide.style.transition = 'none';
+            
+            if (isForward) {
+                // Вправо: новый начинает справа
+                nextSlide.classList.add('from-right');
+            } else {
+                // Влево: новый начинает слева
+                nextSlide.classList.add('from-left');
+            }
+            
+            // Форсируем reflow для применения изменений
+            void nextSlide.offsetHeight;
+            
+            // Возвращаем transition
+            nextSlide.style.transition = '';
+            
+            // Запускаем анимацию
+            requestAnimationFrame(() => {
+                // Убираем активность у текущего и запускаем его выход
+                currentSlide.classList.remove('active');
+                
+                if (isForward) {
+                    // Вправо: текущий уходит влево
+                    currentSlide.classList.add('exit-left');
+                    nextSlide.classList.remove('from-right');
+                } else {
+                    // Влево: текущий уходит вправо
+                    currentSlide.classList.add('exit-right');
+                    nextSlide.classList.remove('from-left');
+                }
+                
+                // Активируем следующий слайд
+                nextSlide.classList.add('active');
+            });
+            
+            // Обновляем миниатюры
             this.thumbnails[this.currentIndex]?.classList.remove('active');
             this.thumbnails[index]?.classList.add('active');
             
             this.currentIndex = index;
-            this.updateAccent();
         },
         
         next() {
             const nextIndex = (this.currentIndex + 1) % this.slides.length;
-            this.goToSlide(nextIndex);
+            this.goToSlide(nextIndex, true); // true = вправо
         },
         
         prev() {
             const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-            this.goToSlide(prevIndex);
-        },
-        
-        updateAccent() {
-            const accent = this.accents[this.currentIndex];
-            
-            if (accent) {
-                // Установить CSS переменную для текущего акцента
-                document.documentElement.style.setProperty('--current-accent', accent);
-            }
+            this.goToSlide(prevIndex, false); // false = влево
         }
     };
     

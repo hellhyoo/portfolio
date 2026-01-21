@@ -30,7 +30,6 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 2rem;
 }
 
 h2.section-title {
@@ -50,6 +49,7 @@ h2.section-title {
     color: var(--color-text);
     text-align: center;
     opacity: 0.5;
+    margin-bottom: 2rem;
 }
 
 /* Общие утилиты */

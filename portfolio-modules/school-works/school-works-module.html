@@ -29,9 +29,10 @@
             flex: 1;
             overflow: hidden;
             position: relative;
-            min-height: 500px;
+            min-height: 650px;
         }
 
+        /* Slide */
         .carousel-slide {
             position: absolute;
             top: 0;
@@ -39,13 +40,16 @@
             width: 100%;
             height: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
             align-items: flex-start;
             opacity: 0;
             transform: translateX(100%);
             transition: opacity 0.5s ease, transform 0.5s ease;
             pointer-events: none;
+            background: rgba(231, 255, 176, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
         }
 
         .carousel-slide.active {
@@ -55,19 +59,40 @@
             z-index: 1;
         }
 
-        .carousel-slide.prev {
+        .carousel-slide.exit-left {
             opacity: 0;
             transform: translateX(-100%);
+        }
+
+        .carousel-slide.exit-right {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        .carousel-slide.from-left {
+            transform: translateX(-100%);
+        }
+
+        .carousel-slide.from-right {
+            transform: translateX(100%);
+        }
+
+        /* Images Container */
+        .slide-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 0.75rem;
         }
 
         .slide-image {
             width: 100%;
             aspect-ratio: 16 / 10;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             overflow: hidden;
-            border: 1px solid;
-            border-color: var(--current-accent, var(--color-accent));
-            transition: border-color 0.5s ease;
+            border: 1px solid var(--color-accent);
         }
 
         .slide-image img {
@@ -76,16 +101,19 @@
             object-fit: cover;
         }
 
+        /* Content */
         .slide-content {
             padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .slide-title {
+            text-align: center;
             font-size: 1.8rem;
             font-weight: 600;
-            color: var(--current-accent, var(--color-accent));
-            margin-bottom: 1.5rem;
-            transition: color 0.5s ease;
+            color: var(--color-accent);
         }
 
         .slide-description {
@@ -95,6 +123,7 @@
             color: var(--color-text);
         }
 
+        /* Arrows */
         .carousel-arrow {
             width: 48px;
             height: 48px;
@@ -120,37 +149,42 @@
             cursor: not-allowed;
         }
 
+        /* Thumbnails */
         .carousel-thumbnails {
             display: flex;
             gap: 0.75rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .thumbnail {
-            width: 60px;
-            height: 8px;
-            border: none;
-            border-radius: 4px;
-            background: var(--color-text);
-            opacity: 0.3;
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--color-text);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--color-text);
             cursor: pointer;
-            transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .thumbnail:hover {
-            opacity: 0.6;
-            transform: scaleY(1.2);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(231, 255, 176, 0.05);
         }
 
         .thumbnail.active {
-            opacity: 1;
-            background: var(--current-accent, var(--color-accent));
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(231, 255, 176, 0.1);
         }
     </style>
 </head>
 <body>
-    <!-- School Works Section -->
     <section id="school-works" class="school-works-section">
         <div class="section-container">
 
@@ -160,87 +194,132 @@
             </div>
             
             <div class="carousel-container">
-                <!-- Стрелка влево -->
+                <!-- Left Arrow -->
                 <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
 
-                <!-- Слайды -->
+                <!-- Slides -->
                 <div class="carousel-track">
                     <div class="carousel-slide active">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/d8005f/ffffff?text=Work+1" alt="Work 1">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/d8005f/ffffff?text=Work+1" alt="Work 1">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 一号</h3>
-                            <p class="slide-description">Описание первой работы...</p>
+                            <p class="slide-description">
+                                これは最初の作品の説明です。このプロジェクトでは、デザインの基礎を学び、
+                                ユーザーインターフェースの構築に焦点を当てました。色彩理論とレイアウトの
+                                原則を実践的に適用しています。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2" alt="Work 2">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2-1" alt="Work 2-1">
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2-2" alt="Work 2-2">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 二号</h3>
-                            <p class="slide-description">Описание второй работы...</p>
+                            <p class="slide-description">
+                                二番目の作品では、複数の画像を使用したレイアウトに挑戦しました。
+                                視覚的な階層構造とグリッドシステムの重要性を理解することができました。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/0091ff/ffffff?text=Work+3" alt="Work 3">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0091ff/ffffff?text=Work+3" alt="Work 3">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 三号</h3>
-                            <p class="slide-description">Описание третьей работы...</p>
+                            <p class="slide-description">
+                                三番目のプロジェクトでは、アニメーションとインタラクティブな要素を統合しました。
+                                ユーザーエクスペリエンスを向上させるための技術を習得しています。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/d92641/ffffff?text=Work+4" alt="Work 4">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/d92641/ffffff?text=Work+4" alt="Work 4">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 四号</h3>
-                            <p class="slide-description">Описание четвёртой работы...</p>
+                            <p class="slide-description">
+                                この作品では、レスポンシブデザインの原則を実践しました。
+                                様々な画面サイズに対応する柔軟なレイアウトの構築方法を学びました。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5" alt="Work 5">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-1" alt="Work 5-1">
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-2" alt="Work 5-2">
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-3" alt="Work 5-3">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 五号</h3>
-                            <p class="slide-description">Описание пятой работы...</p>
+                            <p class="slide-description">
+                                複数の画像を含む大規模なプロジェクトです。コンテンツの整理と
+                                視覚的なストーリーテリングに重点を置いています。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/ffbb00/ffffff?text=Work+6" alt="Work 6">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/ffbb00/ffffff?text=Work+6" alt="Work 6">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 六号</h3>
-                            <p class="slide-description">Описание шестой работы...</p>
+                            <p class="slide-description">
+                                この作品では、タイポグラフィとカラーパレットの調和に焦点を当てました。
+                                ブランディングの基礎を学ぶことができました。
+                            </p>
                         </div>
                     </div>
 
                     <div class="carousel-slide">
-                        <div class="slide-image">
-                            <img src="https://via.placeholder.com/800x500/f06800/ffffff?text=Work+7" alt="Work 7">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/f06800/ffffff?text=Work+7" alt="Work 7">
+                            </div>
                         </div>
                         <div class="slide-content">
                             <h3 class="slide-title">作品名 七号</h3>
-                            <p class="slide-description">Описание седьмой работы...</p>
+                            <p class="slide-description">
+                                最後の作品では、これまで学んだすべての技術を統合しました。
+                                完全なユーザーエクスペリエンスを提供する包括的なデザインです。
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Стрелка вправо -->
+                <!-- Right Arrow -->
                 <button class="carousel-arrow carousel-arrow-right" aria-label="Next">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -248,15 +327,15 @@
                 </button>
             </div>
 
-            <!-- Миниатюры внизу -->
+            <!-- Thumbnails -->
             <div class="carousel-thumbnails">
-                <button class="thumbnail active" data-index="0"></button>
-                <button class="thumbnail" data-index="1"></button>
-                <button class="thumbnail" data-index="2"></button>
-                <button class="thumbnail" data-index="3"></button>
-                <button class="thumbnail" data-index="4"></button>
-                <button class="thumbnail" data-index="5"></button>
-                <button class="thumbnail" data-index="6"></button>
+                <button class="thumbnail active">作品名 一号</button>
+                <button class="thumbnail">作品名 二号</button>
+                <button class="thumbnail">作品名 三号</button>
+                <button class="thumbnail">作品名 四号</button>
+                <button class="thumbnail">作品名 五号</button>
+                <button class="thumbnail">作品名 六号</button>
+                <button class="thumbnail">作品名 七号</button>
             </div>
         </div>
     </section>
@@ -269,20 +348,6 @@
                 currentIndex: 0,
                 slides: [],
                 thumbnails: [],
-                
-                accents: [
-                    '#d8005f', // work 1
-                    '#08c291', // work 2
-                    '#0091ff', // work 3
-                    '#d92641', // work 4
-                    '#0cac44', // work 5
-                    '#ffbb00', // work 6
-                    '#f06800', // work 7
-                    '#b55af2', // work 8
-                    '#e878b4', // work 9
-                    '#bfa892', // work 10
-                    '#0eb8cd', // work 11
-                ],
                 
                 init() {
                     if (document.readyState === 'loading') {
@@ -300,8 +365,6 @@
                     
                     if (!this.slides.length) return;
                     
-                    this.updateAccent();
-                    
                     prevBtn?.addEventListener('click', () => this.prev());
                     nextBtn?.addEventListener('click', () => this.next());
                     
@@ -315,50 +378,84 @@
                     });
                 },
                 
-                goToSlide(index) {
-                    if (index === this.currentIndex) return;
+                goToSlide(index, forceDirection = null) {
+                    if (index === this.currentIndex || index < 0 || index >= this.slides.length) return;
                     
                     const currentSlide = this.slides[this.currentIndex];
                     const nextSlide = this.slides[index];
                     
-                    if (index > this.currentIndex) {
-                        currentSlide.classList.add('prev');
-                        currentSlide.classList.remove('active');
-                        nextSlide.classList.remove('prev');
-                        nextSlide.classList.add('active');
+                    // Определяем направление
+                    let isForward;
+                    
+                    if (forceDirection !== null) {
+                        isForward = forceDirection;
                     } else {
-                        currentSlide.classList.remove('active');
-                        nextSlide.classList.remove('prev');
-                        nextSlide.classList.add('active');
+                        const diff = index - this.currentIndex;
+                        const totalSlides = this.slides.length;
                         
-                        setTimeout(() => {
-                            currentSlide.classList.remove('prev');
-                        }, 500);
+                        if (Math.abs(diff) === totalSlides - 1) {
+                            isForward = diff < 0;
+                        } else {
+                            isForward = diff > 0;
+                        }
                     }
                     
+                    // Полностью очищаем все слайды от классов анимации
+                    this.slides.forEach(slide => {
+                        slide.classList.remove('exit-left', 'exit-right', 'from-left', 'from-right');
+                    });
+                    
+                    // Устанавливаем начальное положение для нового слайда БЕЗ transition
+                    nextSlide.style.transition = 'none';
+                    
+                    if (isForward) {
+                        // Вправо: новый начинает справа
+                        nextSlide.classList.add('from-right');
+                    } else {
+                        // Влево: новый начинает слева
+                        nextSlide.classList.add('from-left');
+                    }
+                    
+                    // Форсируем reflow для применения изменений
+                    void nextSlide.offsetHeight;
+                    
+                    // Возвращаем transition
+                    nextSlide.style.transition = '';
+                    
+                    // Запускаем анимацию
+                    requestAnimationFrame(() => {
+                        // Убираем активность у текущего и запускаем его выход
+                        currentSlide.classList.remove('active');
+                        
+                        if (isForward) {
+                            // Вправо: текущий уходит влево
+                            currentSlide.classList.add('exit-left');
+                            nextSlide.classList.remove('from-right');
+                        } else {
+                            // Влево: текущий уходит вправо
+                            currentSlide.classList.add('exit-right');
+                            nextSlide.classList.remove('from-left');
+                        }
+                        
+                        // Активируем следующий слайд
+                        nextSlide.classList.add('active');
+                    });
+                    
+                    // Обновляем миниатюры
                     this.thumbnails[this.currentIndex]?.classList.remove('active');
                     this.thumbnails[index]?.classList.add('active');
                     
                     this.currentIndex = index;
-                    this.updateAccent();
                 },
                 
                 next() {
                     const nextIndex = (this.currentIndex + 1) % this.slides.length;
-                    this.goToSlide(nextIndex);
+                    this.goToSlide(nextIndex, true); // true = вправо
                 },
                 
                 prev() {
                     const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-                    this.goToSlide(prevIndex);
-                },
-                
-                updateAccent() {
-                    const accent = this.accents[this.currentIndex];
-                    
-                    if (accent) {
-                        document.documentElement.style.setProperty('--current-accent', accent);
-                    }
+                    this.goToSlide(prevIndex, false); // false = влево
                 }
             };
             
