@@ -13,13 +13,17 @@ body {
 }
 
 section {
-    padding: 4rem 0; /* Только вертикальные отступы */
+    min-height: 100vh; /* Минимальная высота = высота viewport */
+    padding: 4rem 0; /* Вертикальные отступы */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Прижать содержимое к верху */
 }
 
 .section-container {
     max-width: 1400px;
     margin: 0 auto; 
-    padding: 0 0; /* Горизонтальные отступы */
+    padding: 0; /* Горизонтальные отступы */
     display: flex;
     flex-direction: column;
     align-items: center;

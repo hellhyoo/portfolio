@@ -65,7 +65,7 @@
             }
         },
         
-        observeSections(nav, indicator) {
+        observeSections() {
             const sections = document.querySelectorAll('section[id]');
             const options = {
                 rootMargin: '-50% 0px -50% 0px',
@@ -75,7 +75,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.setActiveLink(entry.target.id, nav, indicator);
+                        this.setActiveLink(entry.target.id);
                     }
                 });
             }, options);

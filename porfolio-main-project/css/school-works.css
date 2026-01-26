@@ -1,5 +1,12 @@
-/* Контейнер карусели */
+/* Carousel Container */
+.carousel-wrapper {
+    width: 100%;
+    position: relative;
+}
+
 .carousel-container {
+    max-width: 1400px;
+    margin: 0 auto;
     position: relative;
     width: 100%;
     display: flex;
@@ -8,10 +15,10 @@
 }
 
 .carousel-track {
-    flex: 1;
     overflow: hidden;
     position: relative;
-    min-height: 650px;
+    min-height: 630px;
+    width: 100%;
 }
 
 /* Slide */
@@ -24,7 +31,7 @@
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 2rem;
-    align-items: flex-start;
+    align-items: stretch;
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -62,15 +69,17 @@
 /* Images Container */
 .slide-images {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    align-items: start;
+    justify-content: center;
     padding: 1.5rem;
     border: 1px solid var(--color-accent);
     border-radius: 0.75rem;
+    height: 100%;
 }
 
 .slide-image {
     width: 100%;
+    max-height: 100%;
     aspect-ratio: 16 / 10;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -105,8 +114,11 @@
     color: var(--color-text);
 }
 
-/* Arrows */
+/* Arrows - абсолютное позиционирование */
 .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 48px;
     height: 48px;
     border: 1px solid var(--color-text);
@@ -119,6 +131,15 @@
     justify-content: center;
     flex-shrink: 0;
     transition: color 0.3s ease, border-color 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-arrow-left {
+    left: -80px; /* 48px ширина + 32px отступ */
+}
+
+.carousel-arrow-right {
+    right: -80px;
 }
 
 .carousel-arrow:hover {
