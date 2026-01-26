@@ -17,20 +17,27 @@
         @import url(../../porfolio-main-project/css/main.css);
 
         /* School Works Styles */
+        .carousel-wrapper {
+            width: 100%;
+            position: relative;
+        }
+
+        /* Carousel Container - центрируем и добавляем стрелки */
         .carousel-container {
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 2rem;
         }
 
         .carousel-track {
-            flex: 1;
             overflow: hidden;
             position: relative;
             min-height: 630px;
+            width: 100%;
         }
 
         /* Slide */
@@ -43,7 +50,7 @@
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 2rem;
-            align-items: flex-start;
+            align-items: stretch;
             opacity: 0;
             transform: translateX(100%);
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -81,15 +88,17 @@
         /* Images Container */
         .slide-images {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            align-items: start;
+            justify-content: center;
             padding: 1.5rem;
             border: 1px solid var(--color-accent);
             border-radius: 0.75rem;
+            height: 100%;
         }
 
         .slide-image {
             width: 100%;
+            max-height: 100%;
             aspect-ratio: 16 / 10;
             border-radius: 0.5rem;
             overflow: hidden;
@@ -124,8 +133,11 @@
             color: var(--color-text);
         }
 
-        /* Arrows */
+        /* Arrows - абсолютное позиционирование */
         .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             width: 48px;
             height: 48px;
             border: 1px solid var(--color-text);
@@ -138,6 +150,15 @@
             justify-content: center;
             flex-shrink: 0;
             transition: color 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow-left {
+            left: -80px; /* 48px ширина + 32px отступ */
+        }
+
+        .carousel-arrow-right {
+            right: -80px;
         }
 
         .carousel-arrow:hover {
@@ -193,7 +214,10 @@
                 <h2 class="section-title">作品</h2>
                 <div class="section-subtitle">一 在学一年目の制作作品 。</div>
             </div>
-            
+        </div>
+
+        <!-- Carousel Wrapper - вне основного контейнера -->
+        <div class="carousel-wrapper">
             <div class="carousel-container">
                 <!-- Left Arrow -->
                 <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">
@@ -223,10 +247,7 @@
                     <div class="carousel-slide">
                         <div class="slide-images">
                             <div class="slide-image">
-                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2-1" alt="Work 2-1">
-                            </div>
-                            <div class="slide-image">
-                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2-2" alt="Work 2-2">
+                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2" alt="Work 2">
                             </div>
                         </div>
                         <div class="slide-content">
@@ -271,13 +292,7 @@
                     <div class="carousel-slide">
                         <div class="slide-images">
                             <div class="slide-image">
-                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-1" alt="Work 5-1">
-                            </div>
-                            <div class="slide-image">
-                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-2" alt="Work 5-2">
-                            </div>
-                            <div class="slide-image">
-                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5-3" alt="Work 5-3">
+                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5" alt="Work 5">
                             </div>
                         </div>
                         <div class="slide-content">
@@ -327,8 +342,10 @@
                     </svg>
                 </button>
             </div>
+        </div>
 
-            <!-- Thumbnails -->
+        <!-- Thumbnails - обратно в основной контейнер -->
+        <div class="section-container">
             <div class="carousel-thumbnails">
                 <button class="thumbnail active">作品名 一号</button>
                 <button class="thumbnail">作品名 二号</button>
