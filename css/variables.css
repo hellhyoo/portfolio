@@ -1,0 +1,26 @@
+:root {
+    /* Основные цвета */
+    --color-bg: #0c0a09;
+    --color-text: #a3a3a3;
+    --color-text-bright: #fff;
+    --color-accent: #e7ffb0;
+    
+    /* Акценты для школьных работ */
+    --accent-1: #d8005f;
+    --accent-2: #08c291;
+    --accent-3: #0091ff;
+    --accent-4: #d92641;
+    --accent-5: #0cac44;
+    --accent-6: #ffbb00;
+    --accent-7: #f06800;
+    --accent-8: #b55af2;
+    --accent-9: #e878b4;
+    --accent-10: #bfa892;
+    --accent-11: #0eb8cd;
+    
+    /* Шрифты */
+    --font-family: 'Google Sans Flex', 'Noto Sans JP', sans-serif;
+    
+    /* Переходы */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

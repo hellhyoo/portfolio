@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/school-works.css">
+    <link rel="stylesheet" href="css/pet-projects.css">
+    <link rel="stylesheet" href="css/navigation.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="section-container">
+            <h1>ポートフォリオ</h1>
+
+            <div class="section-header">
+                <h2 class="section-title">自己紹介</h2>
+                <div class="section-subtitle">一 はじめまして 。</div>
+            </div>
+        
+            <div class="hero-content">
+                <div class="hero-left">
+                    <img src="images/avatar.jpg" alt="Avatar" class="hero-avatar">
+                </div>
+                
+                <div class="hero-divider"></div>
+                
+                <div class="hero-text">
+                    <p>
+                        はじめまして。セルゲイと申します。<br>
+                        千葉医療秘書＆IT専門学校WEBデザイン・IT科の1年生です。
+                    </p>
+                    <p>
+                        グラフィックデザインに興味があり、今年度は美しさと構造へのこだわりを、<br>
+                        Webインターフェースの制作を通して形にしてきました。細部への配慮と使いやすさを重視しています。
+                    </p>
+                    <p>
+                        本ポートフォリオには、
+                        在学期間中に制作した作品を収録しています。カリキュラム内の課題作品に加え、<br>
+                        スキル向上や自身のアイデアの実現を目的とした自主制作も含まれています。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills">
+                <div class="section-subtitle">一 思考の周辺 。</div>
+                <!-- Капсульные теги -->
+                <ul class="skills-tags">
+                    <li class="skills-tag" data-skill="photoshop">Photoshop</li>
+                    <li class="skills-tag" data-skill="illustrator">Illustrator</li>
+                    <li class="skills-tag" data-skill="premiere">Premiere Pro</li>
+                    <li class="skills-tag" data-skill="adobe-xd">Adobe XD</li>
+                    <li class="skills-tag" data-skill="figma">Figma</li>
+                    <li class="skills-tag" data-skill="html">HTML</li>
+                    <li class="skills-tag" data-skill="css">CSS</li>
+                </ul>
+
+                <ul class="skills-tags">
+                    <li class="skills-tag" data-skill="javascript">JavaScript</li>
+                    <li class="skills-tag" data-skill="python">Python</li>
+                    <li class="skills-tag" data-skill="word">Word</li>
+                    <li class="skills-tag" data-skill="excel">Excel</li>
+                    <li class="skills-tag" data-skill="access">Access</li>
+                    <li class="skills-tag" data-skill="supabase">Supabase</li>
+                </ul>
+
+                <!-- Бегущая строка с иконками -->
+                <div class="skills-icons-wrapper">
+                    <div class="skills-icons-track">
+                        <ul class="skills-icons">
+                            <li class="skills-icon" data-skill="photoshop"></li>
+                            <li class="skills-icon" data-skill="illustrator"></li>
+                            <li class="skills-icon" data-skill="premiere"></li>
+                            <li class="skills-icon" data-skill="adobe-xd"></li>
+                            <li class="skills-icon" data-skill="figma"></li>
+                            <li class="skills-icon" data-skill="html"></li>
+                            <li class="skills-icon" data-skill="css"></li>
+                            <li class="skills-icon" data-skill="javascript"></li>
+                            <li class="skills-icon" data-skill="python"></li>
+                            <li class="skills-icon" data-skill="word"></li>
+                            <li class="skills-icon" data-skill="excel"></li>
+                            <li class="skills-icon" data-skill="access"></li>
+                            <li class="skills-icon" data-skill="supabase"></li>
+                        </ul>
+                        <!-- Дублируем для бесшовной анимации -->
+                        <ul class="skills-icons" aria-hidden="true">
+                            <li class="skills-icon" data-skill="photoshop"></li>
+                            <li class="skills-icon" data-skill="illustrator"></li>
+                            <li class="skills-icon" data-skill="premiere"></li>
+                            <li class="skills-icon" data-skill="adobe-xd"></li>
+                            <li class="skills-icon" data-skill="figma"></li>
+                            <li class="skills-icon" data-skill="html"></li>
+                            <li class="skills-icon" data-skill="css"></li>
+                            <li class="skills-icon" data-skill="javascript"></li>
+                            <li class="skills-icon" data-skill="python"></li>
+                            <li class="skills-icon" data-skill="word"></li>
+                            <li class="skills-icon" data-skill="excel"></li>
+                            <li class="skills-icon" data-skill="access"></li>
+                            <li class="skills-icon" data-skill="supabase"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- School Works Section -->
+    <section id="school-works" class="school-works-section">
+        <div class="section-container">
+
+            <div class="section-header">
+                <h2 class="section-title">作品</h2>
+                <div class="section-subtitle">一 在学一年目の制作作品 。</div>
+            </div>
+        </div>
+
+        <!-- Carousel Wrapper - вне основного контейнера -->
+        <div class="carousel-wrapper">
+            <div class="carousel-container">
+                <!-- Left Arrow -->
+                <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Slides -->
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/d8005f/ffffff?text=Work+1" alt="Work 1">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 一号</h3>
+                            <p class="slide-description">
+                                これは最初の作品の説明です。このプロジェクトでは、デザインの基礎を学び、
+                                ユーザーインターフェースの構築に焦点を当てました。色彩理論とレイアウトの
+                                原則を実践的に適用しています。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/08c291/ffffff?text=Work+2" alt="Work 2">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 二号</h3>
+                            <p class="slide-description">
+                                二番目の作品では、複数の画像を使用したレイアウトに挑戦しました。
+                                視覚的な階層構造とグリッドシステムの重要性を理解することができました。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0091ff/ffffff?text=Work+3" alt="Work 3">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 三号</h3>
+                            <p class="slide-description">
+                                三番目のプロジェクトでは、アニメーションとインタラクティブな要素を統合しました。
+                                ユーザーエクスペリエンスを向上させるための技術を習得しています。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/d92641/ffffff?text=Work+4" alt="Work 4">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 四号</h3>
+                            <p class="slide-description">
+                                この作品では、レスポンシブデザインの原則を実践しました。
+                                様々な画面サイズに対応する柔軟なレイアウトの構築方法を学びました。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/0cac44/ffffff?text=Work+5" alt="Work 5">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 五号</h3>
+                            <p class="slide-description">
+                                複数の画像を含む大規模なプロジェクトです。コンテンツの整理と
+                                視覚的なストーリーテリングに重点を置いています。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/ffbb00/ffffff?text=Work+6" alt="Work 6">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 六号</h3>
+                            <p class="slide-description">
+                                この作品では、タイポグラフィとカラーパレットの調和に焦点を当てました。
+                                ブランディングの基礎を学ぶことができました。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="slide-images">
+                            <div class="slide-image">
+                                <img src="https://via.placeholder.com/800x500/f06800/ffffff?text=Work+7" alt="Work 7">
+                            </div>
+                        </div>
+                        <div class="slide-content">
+                            <h3 class="slide-title">作品名 七号</h3>
+                            <p class="slide-description">
+                                最後の作品では、これまで学んだすべての技術を統合しました。
+                                完全なユーザーエクスペリエンスを提供する包括的なデザインです。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Arrow -->
+                <button class="carousel-arrow carousel-arrow-right" aria-label="Next">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Thumbnails - обратно в основной контейнер -->
+        <div class="section-container">
+            <div class="carousel-thumbnails">
+                <button class="thumbnail active">作品名 一号</button>
+                <button class="thumbnail">作品名 二号</button>
+                <button class="thumbnail">作品名 三号</button>
+                <button class="thumbnail">作品名 四号</button>
+                <button class="thumbnail">作品名 五号</button>
+                <button class="thumbnail">作品名 六号</button>
+                <button class="thumbnail">作品名 七号</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pet Projects Section -->
+    <section id="pet-projects" class="pet-projects-section">
+        <div class="section-container">
+
+            <div class="section-header">
+                <h2 class="section-title">自主制作</h2>
+                <div class="section-subtitle">一 成長は、プロセスに興味があるところから始まる 。</div>
+            </div>
+        
+            <div class="project-section" id="projectSection">
+                <div class="project-strip">
+                    <a href="https://rgb-hex.netlify.app" class="project-card">
+                        <div class="project-card-inner">
+                            <img src="images/project-1.jpg" alt="RGB HEX Visualizer" class="project-image">
+                            <h3 class="project-title">RGB HEX Color Code Visualizer</h3>
+                        </div>
+                        <p class="project-description">
+                            <span>
+                                Интерактивный веб-инструмент, предназначенный для визуализации процесса формирования цвета через шестнадцатеричные (HEX) коды.
+                                Проект позволяет в реальном времени наблюдать, как изменение значений в каналах Red, Green и Blue влияет на итоговый цвет.
+                            </span>
+                        </p>
+                    </a>
+
+                    <a href="https://js-arr.netlify.app" class="project-card">
+                        <div class="project-card-inner">
+                            <img src="images/project-2.jpg" alt="JS Array Methods" class="project-image">
+                            <h3 class="project-title">JS Array Methods Visualizer</h3>
+                        </div>
+                        <p class="project-description">
+                            <span>
+                                Образовательный веб-инструмент, предназначенный для наглядного изучения работы встроенных методов массивов JavaScript.<br>
+                                Проект позволяет интерактивно манипулировать данными и мгновенно видеть результат выполнения кода, что помогает лучше понять внутреннюю логику работы методов.
+                            </span>
+                        </p>
+                    </a>
+
+                    <a href="https://mail-jp.netlify.app" class="project-card">
+                        <div class="project-card-inner">
+                            <img src="images/project-3.jpg" alt="Email Builder" class="project-image">
+                            <h3 class="project-title">Japanese Business Email Builder</h3>
+                        </div>
+                        <p class="project-description">
+                            <span>
+                                Интерактивный веб-инструмент для автоматизации составления деловых писем на японском языке в соответствии с нормами бизнес-этикета.
+                                Проект позволяет пользователям динамически формировать структуру письма, настраивая заголовки, приветствия, основную часть и подпись в реальном времени.
+                            </span>
+                        </p>
+                    </a>
+
+                    <a href="#!" class="project-card">
+                        <div class="project-card-inner">
+                            <img src="images/project-4.jpg" alt="Twitch Overlay" class="project-image">
+                            <h3 class="project-title">Dynamic Twitch Chat Overlay</h3>
+                        </div>
+                        <p class="project-description">
+                            <span>
+                                Высокопроизводительный веб-виджет, предназначенный для отображения сообщений из чата Twitch в реальном времени во время прямых трансляций.<br>
+                                Инструмент интегрируется непосредственно с Twitch IRC и сторонними сервисами через API, обеспечивая плавную визуализацию общения зрителей.
+                            </span>
+                        </p>
+                    </a>
+
+                    <a href="#!" class="project-card">
+                        <div class="project-card-inner">
+                            <img src="images/project-5.jpg" alt="Car Configurator" class="project-image">
+                            <h3 class="project-title">Car Care Service Configurator</h3>
+                        </div>
+                        <p class="project-description">
+                            <span>
+                                Интеллектуальная система конфигурации услуг для автомобилей.
+                                Проект прошел путь от авторского концепта до внедрения в production.<br>
+                                В основе сервиса лежит уникальная логика взаимозависимых параметров, которая впоследствии была защищена патентом.
+                            </span>
+                        </p>
+                    </a>
+                </div>
+
+                <div class="toggle-wrapper">
+                    <div class="toggle-line"></div>
+                    <button class="toggle-btn" id="toggleBtn">
+                        <span class="btn-text-show" id="textShow">詳細を見る</span> <!-- показать подробности / 詳細を表示 -->
+                        <span class="btn-text-hide" id="textHide">閉じる</span> <!-- скрыть / 非表示 -->
+                    </button>
+                    <div class="toggle-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Navigation -->
+    <nav class="smooth-nav">
+        <div class="smooth-nav-indicator"></div>
+        <a class="smooth-nav-link" href="#hero" data-section="hero">自己紹介</a>
+        <a class="smooth-nav-link" href="#school-works" data-section="school-works">作品</a>
+        <a class="smooth-nav-link" href="#pet-projects" data-section="pet-projects">自主制作</a>
+    </nav>
+    
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/school-works.js"></script>
+    <script src="js/pet-projects.js"></script>
+    <script src="js/hero.js"></script>
+</body>
+</html>

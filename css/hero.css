@@ -1,0 +1,195 @@
+/* Hero Section Styles */
+.hero-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+/* Левая часть: аватар */
+.hero-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--color-text);
+    flex-shrink: 0;
+}
+
+.hero-divider {
+    width: 1px;
+    background: var(--color-text);
+    transform: scaleX(0.5);
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+/* Правая часть: текст */
+.hero-text {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--color-text-bright);
+    max-width: 800px;
+    flex-shrink: 1;
+}
+
+.hero-text p {
+    margin-bottom: 1.1rem;
+}
+
+.hero-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Skills Section */
+.skills {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Капсульные теги */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+    margin-bottom: 1rem;
+}
+
+.skills-tag {
+    padding: 0.5rem 1.2rem;
+    background: transparent;
+    border: 1px solid var(--color-text);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.skills-tag:hover,
+.skills-tag.highlighted {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(231, 255, 176, 0.05);
+}
+
+/* Бегущая строка с иконками */
+.skills-icons-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0.5rem auto 0;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+    );
+}
+
+.skills-icons-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 120s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.skills-icons {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 12px;
+    flex-shrink: 0;
+    user-select: none;
+    margin-right: 1.7rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px 40px;
+    transition: background-color 0.3s ease;
+}
+
+.skills-icon:hover,
+.skills-icon.highlighted {
+    background-color: rgba(231, 255, 176, 0.2);
+}
+
+.skills-icon[data-skill="photoshop"] {
+    background-image: url(../images/photoshop.svg);
+}
+.skills-icon[data-skill="illustrator"] {
+    background-image: url(../images/illustrator.svg);
+}
+.skills-icon[data-skill="premiere"] {
+    background-image: url(../images/premiere.svg);
+}
+.skills-icon[data-skill="adobe-xd"] {
+    background-image: url(../images/xd.svg);
+}
+.skills-icon[data-skill="figma"] {
+    background-image: url(../images/figma.png);
+}
+.skills-icon[data-skill="html"] {
+    background-image: url(../images/html.svg);
+}
+.skills-icon[data-skill="css"] {
+    background-image: url(../images/css.svg);
+}
+.skills-icon[data-skill="javascript"] {
+    background-image: url(../images/javascript.png);
+}
+.skills-icon[data-skill="python"] {
+    background-image: url(../images/python.svg);
+}
+.skills-icon[data-skill="word"] {
+    background-image: url(../images/word.svg);
+}
+.skills-icon[data-skill="excel"] {
+    background-image: url(../images/excel.svg);
+}
+.skills-icon[data-skill="access"] {
+    background-image: url(../images/access.svg);
+}
+.skills-icon[data-skill="supabase"] {
+    background-image: url(../images/supabase.svg);
+}
