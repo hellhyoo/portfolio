@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet-projects - 自主制作</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variables */
+    @import url(../../porfolio-main-project/css/variables.css);
+    /* Base Styles */
+    @import url(../../porfolio-main-project/css/main.css);
+
+    /* ============================================ */
+    /* PET PROJECTS STYLES */
+    /* ============================================ */
+
+    .project-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .project-strip {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .project-card {
+      display: grid;
+      flex: 1;
+      gap: 0;
+      padding: 0.75rem;
+      box-shadow: inset 0 0 0 0.5px #a3a3a3;
+      border-radius: 0.75rem;
+      background: transparent;
+      text-decoration: none;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, 
+                  background 0.3s ease,
+                  gap 0.4s ease;
+    }
+    .project-card:hover {
+      box-shadow: inset 0 0 0 0.5px #e7ffb0;
+      background: rgba(231, 255, 176, 0.1);
+    }
+    .project-card-inner {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .project-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 0.25rem;
+      flex-shrink: 0;
+      background-color: #333;
+    }
+    .project-title {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    .project-card:hover .project-title {
+      color: #e7ffb0;
+    }
+
+    .project-description {
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: #a3a3a3;
+      opacity: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: opacity 0.4s ease,
+                  grid-template-rows 0.4s ease;
+    }
+    .project-description > * {
+      min-height: 0;
+    }
+
+    /* Раскрытое состояние */
+    .project-section.expanded .project-card {
+      gap: 0.75rem;
+    }
+    .project-section.expanded .project-description {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    /* Кнопка toggle */
+    .toggle-btn {
+      font-family: inherit;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-self: center;
+      position: relative;
+      padding: 0.8rem 1.8rem;
+      background: transparent;
+      color: #a3a3a3;
+      border: 1px solid #a3a3a380;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.3s ease,
+                  border-color 0.3s ease,
+                  width 0.4s ease;
+    }
+    .toggle-btn:hover {
+      color: #fff;
+      border-color: #fff;
+    }
+    .btn-text-show,
+    .btn-text-hide {
+      transition: opacity 0.4s ease;
+    }
+    .btn-text-show {
+      opacity: 1;
+      position: relative;
+      transition-delay: 0.2s;
+    }
+    .btn-text-hide {
+      opacity: 0;
+      position: absolute;
+      transition-delay: 0s;
+    }
+    /* Состояние expanded */
+    .toggle-btn.active .btn-text-show {
+      opacity: 0;
+      position: absolute;
+      transition-delay: 0s;
+    }
+    .toggle-btn.active .btn-text-hide {
+      opacity: 1;
+      position: relative;
+      transition-delay: 0.2s;
+    }
+    .toggle-wrapper {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+    }
+    .toggle-line {
+      display: flex;
+      flex: 1;
+      align-items: center;
+    }
+    .toggle-line::before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: #a3a3a3;
+      transform: scaleY(0.5);
+    }
+
+    /* ============================================ */
+    /* CONTACTS SECTION STYLES */
+    /* ============================================ */
+
+    .contacts-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .contacts-table {
+      width: 450px;
+      margin: 0 auto;
+    }
+
+    .contacts-rows {
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 3rem;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .contact-row::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 450px;
+      height: 1px;
+      background: #a3a3a3;
+      transform: translateX(-50%) scaleY(0.5);
+    }
+
+    .contact-row:last-child::after {
+      display: none;
+    }
+
+    .contact-row:first-child {
+      padding-top: 0;
+    }
+
+    .contact-row:last-child {
+      padding-bottom: 0;
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #a3a3a3;
+      text-align: right;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #fff;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .contact-value:hover {
+      color: #e7ffb0;
+    }
+
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <section id="pet-projects" class="pet-projects-section">
+    <div class="section-container">
+
+      <div class="section-header">
+        <h2 class="section-title">自主制作</h2>
+        <div class="section-subtitle">一 成長は、プロセスに興味があるところから始まる 。</div>
+      </div>
+
+      <div class="project-section" id="projectSection">
+        <div class="project-strip">
+          <a href="https://rgb-hex.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 1" class="project-image">
+              <h3 class="project-title">RGB HEX Color Code Visualizer</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                HEX コードを通じて色の形成プロセスを視覚化するインタラクティブなウェブツール。
+                このプロジェクトでは、Red、Green、Blue の各チャンネルの値の変化が最終的な色にどのように影響するかをリアルタイムで観察できます。
+              </span>
+            </p>
+          </a>
+
+          <a href="https://js-arr.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 2" class="project-image">
+              <h3 class="project-title">JS Array Methods Visualizer</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                JavaScript の組み込み配列メソッドの動作を視覚的に学習するための教育用ウェブツール。
+                このプロジェクトでは、データをインタラクティブに操作し、コードの実行結果を即座に確認できるため、メソッドの内部ロジックをより深く理解することができます。
+              </span>
+            </p>
+          </a>
+
+          <a href="https://mail-jp.netlify.app" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 3" class="project-image">
+              <h3 class="project-title">Japanese Business Email Builder</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                ビジネスマナーに準拠した日本語のビジネスメール作成を自動化するインタラクティブなウェブツール。
+                このプロジェクトでは、ユーザーがメールの構造を動的に構成し、見出し、挨拶文、本文、署名をリアルタイムで調整できます。
+              </span>
+            </p>
+          </a>
+
+          <a href="#!" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 4" class="project-image">
+              <h3 class="project-title">Dynamic Twitch Chat Overlay</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                ライブ配信中に Twitch チャットのメッセージをリアルタイムで表示する高性能ウェブウィジェット。
+                このツールは Twitch IRC および API を通じてサードパーティサービスと直接統合し、視聴者のコミュニケーションをスムーズに視覚化します。
+              </span>
+            </p>
+          </a>
+
+          <a href="#!" class="project-card">
+            <div class="project-card-inner">
+              <img src="KomaPote.png" alt="Project 5" class="project-image">
+              <h3 class="project-title">Car Care Service Configurator</h3>
+            </div>
+            <p class="project-description">
+              <span>
+                自動車向けサービス設定のインテリジェントシステム。このプロジェクトは独自のコンセプトから本番環境への実装まで進化しました。
+                サービスの核心には相互依存パラメータの独自ロジックがあり、後に特許で保護されました。
+                <!-- ポートフォリオには、サービスのアーキテクチャ基盤として私が開発した初期プロトタイプの画像が掲載されています。 -->
+              </span>
+            </p>
+          </a>
+        </div>
+
+        <div class="toggle-wrapper">
+          <div class="toggle-line"></div>
+          <button class="toggle-btn" id="toggleBtn">
+            <span class="btn-text-show" id="textShow">詳細を見る</span>
+            <span class="btn-text-hide" id="textHide">閉じる</span>
+          </button>
+          <div class="toggle-line"></div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- CONTACTS SECTION -->
+      <!-- ============================================ -->
+      
+      <div class="section-header">
+        <h2 class="section-title">連絡先</h2>
+        <div class="section-subtitle">一 関心に、感謝します 。</div>
+      </div>
+
+      <div class="contacts-section">
+        <div class="contacts-table">
+          <div class="contacts-rows">
+
+            <div class="contact-row" data-copy="veb01-wi250014@sankogakuen.jp">
+              <div class="contact-label">メール</div>
+              <div class="contact-value">veb01-wi250014@sankogakuen.jp</div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">学校住所</div>
+              <div class="contact-value">
+                <a href="https://www.google.com/maps/search/?api=1&query=〒260-0014+千葉県千葉市中央区本千葉町8‐19" target="_blank" rel="noopener noreferrer">
+                  260-0014 千葉県千葉市中央区本千葉町8‐19
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-row" data-copy="0120-498-035">
+              <div class="contact-label">電話番号</div>
+              <div class="contact-value">0120-498-035</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
+  <script>
+    // ============================================
+    // PET PROJECTS TOGGLE SCRIPT
+    // ============================================
+
+    const section = document.getElementById('projectSection');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const textShow = document.getElementById('textShow');
+    const textHide = document.getElementById('textHide');
+
+    let widthShow, widthHide;
+
+    // Функция измерения
+    const measure = () => {
+      const cs = getComputedStyle(toggleBtn);
+      const offset = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) 
+        + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+      
+      widthShow = textShow.offsetWidth + offset;
+      widthHide = textHide.offsetWidth + offset;
+      
+      toggleBtn.style.width = (toggleBtn.classList.contains('active') 
+        ? widthHide 
+        : widthShow) + 'px';
+    };
+
+    // ResizeObserver следит за кнопкой
+    new ResizeObserver(measure).observe(toggleBtn);
+
+    // Переключение при клике
+    toggleBtn.addEventListener('click', () => {
+      section.classList.toggle('expanded');
+      toggleBtn.classList.toggle('active');
+      
+      toggleBtn.style.width = (toggleBtn.classList.contains('active') 
+        ? widthHide 
+        : widthShow) + 'px';
+    });
+
+    // ============================================
+    // CONTACTS COPY TO CLIPBOARD SCRIPT
+    // ============================================
+
+    const contactRows = document.querySelectorAll('.contact-row[data-copy]');
+
+    contactRows.forEach(row => {
+      row.addEventListener('click', () => {
+        const textToCopy = row.dataset.copy;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          // Копирование выполнено успешно (без визуальной обратной связи)
+        }).catch(err => {
+          console.error('Ошибка копирования:', err);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

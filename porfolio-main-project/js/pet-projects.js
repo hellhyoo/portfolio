@@ -1,3 +1,5 @@
+// PetProjects
+//
 (function() {
     'use strict';
     
@@ -50,4 +52,32 @@
     };
     
     PetProjects.init();
+})();
+
+// Contacts
+//
+(function() {
+    'use strict';
+    
+    const Contacts = {
+        init() {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => this.setup());
+            } else {
+                this.setup();
+            }
+        },
+        
+        setup() {
+            const contactRows = document.querySelectorAll('.contact-row[data-copy]');
+            
+            contactRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    navigator.clipboard.writeText(row.dataset.copy);
+                });
+            });
+        }
+    };
+    
+    Contacts.init();
 })();
